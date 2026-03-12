@@ -8,9 +8,20 @@ export const LanguageSwitcher: React.FC = () => {
     }
 
     return (
-        <div className="flex justify-end text-right">
-            <span className="cursor-pointer" onClick={() => handleLanguageChange('en')}>EN</span> /
-            <span className="cursor-pointer" onClick={() => handleLanguageChange('es')}>ES</span>
+        <div className="flex justify-end text-right gap-1 items-center">
+            <button
+                className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 dark:focus-visible:ring-zinc-300 rounded"
+                onClick={() => handleLanguageChange('en')}
+            >
+                EN
+            </button>
+            <span aria-hidden="true">/</span>
+            <button
+                className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 dark:focus-visible:ring-zinc-300 rounded"
+                onClick={() => handleLanguageChange('es')}
+            >
+                ES
+            </button>
         </div>
     )
 }
