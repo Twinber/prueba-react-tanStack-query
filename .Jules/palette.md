@@ -1,0 +1,3 @@
+## 2024-03-14 - Radix UI Button asChild pattern for Links
+**Learning:** Found an accessibility anti-pattern where standard `<a>` tags were wrapping native `<button>` tags (or components rendering native buttons) to create link-buttons. This results in invalid HTML (interactive element inside an interactive element) and confuses screen readers.
+**Action:** Always use Radix UI's `<Button asChild>` to wrap semantic `<a>` tags when you need a link that looks like a button. This preserves the semantic HTML and native accessibility of the anchor tag while applying the Shadcn UI button styling correctly.
