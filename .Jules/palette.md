@@ -1,0 +1,3 @@
+## 2024-05-18 - Non-interactive elements used for actions
+**Learning:** Found that `<span onClick={...}>` was used for language switching. This breaks keyboard navigation (tabbing, pressing enter/space to trigger) and doesn't communicate correctly to screen readers.
+**Action:** Replace `<span>` elements that have `onClick` handlers with semantic `<button>` elements, add `aria-label` for screen readers, and add `focus-visible` styles (`focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 rounded-sm`) so keyboard navigation is clear. Ensure separators like `/` have `aria-hidden="true"` so they are ignored by screen readers.

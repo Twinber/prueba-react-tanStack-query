@@ -10,70 +10,37 @@
 
 import { createFileRoute } from '@tanstack/react-router'
 
-// Import Routes
+import { Route as rootRouteImport } from './routes/__root'
 
-import { Route as rootRoute } from './routes/__root'
+const IndexLazyRouteImport = createFileRoute('/')()
+const NetworkNetworkIdLazyRouteImport = createFileRoute('/network/$networkId')()
 
-// Create Virtual Routes
-
-const IndexLazyImport = createFileRoute('/')()
-const NetworkNetworkIdLazyImport = createFileRoute('/network/$networkId')()
-
-// Create/Update Routes
-
-const IndexLazyRoute = IndexLazyImport.update({
+const IndexLazyRoute = IndexLazyRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
-
-const NetworkNetworkIdLazyRoute = NetworkNetworkIdLazyImport.update({
+const NetworkNetworkIdLazyRoute = NetworkNetworkIdLazyRouteImport.update({
   id: '/network/$networkId',
   path: '/network/$networkId',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any).lazy(() =>
   import('./routes/network/$networkId.lazy').then((d) => d.Route),
 )
-
-// Populate the FileRoutesByPath interface
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/network/$networkId': {
-      id: '/network/$networkId'
-      path: '/network/$networkId'
-      fullPath: '/network/$networkId'
-      preLoaderRoute: typeof NetworkNetworkIdLazyImport
-      parentRoute: typeof rootRoute
-    }
-  }
-}
-
-// Create and export the route tree
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/network/$networkId': typeof NetworkNetworkIdLazyRoute
 }
-
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/network/$networkId': typeof NetworkNetworkIdLazyRoute
 }
-
 export interface FileRoutesById {
-  __root__: typeof rootRoute
+  __root__: typeof rootRouteImport
   '/': typeof IndexLazyRoute
   '/network/$networkId': typeof NetworkNetworkIdLazyRoute
 }
-
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths: '/' | '/network/$networkId'
@@ -82,37 +49,34 @@ export interface FileRouteTypes {
   id: '__root__' | '/' | '/network/$networkId'
   fileRoutesById: FileRoutesById
 }
-
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   NetworkNetworkIdLazyRoute: typeof NetworkNetworkIdLazyRoute
+}
+
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/network/$networkId': {
+      id: '/network/$networkId'
+      path: '/network/$networkId'
+      fullPath: '/network/$networkId'
+      preLoaderRoute: typeof NetworkNetworkIdLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   NetworkNetworkIdLazyRoute: NetworkNetworkIdLazyRoute,
 }
-
-export const routeTree = rootRoute
+export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.tsx",
-      "children": [
-        "/",
-        "/network/$networkId"
-      ]
-    },
-    "/": {
-      "filePath": "index.lazy.tsx"
-    },
-    "/network/$networkId": {
-      "filePath": "network/$networkId.lazy.tsx"
-    }
-  }
-}
-ROUTE_MANIFEST_END */
