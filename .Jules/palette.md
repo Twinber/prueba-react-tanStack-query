@@ -1,0 +1,3 @@
+## 2024-05-24 - Semantic Buttons for Language Switcher
+**Learning:** The app's `LanguageSwitcher` used `<span>` tags with `onClick` handlers for interactive elements. This is an accessibility anti-pattern as it lacks keyboard focusability and screen reader semantics.
+**Action:** Always verify custom interactive toggles and switchers use semantic `<button>` tags with appropriate `aria-label`s and `focus-visible` styles rather than non-interactive tags.
