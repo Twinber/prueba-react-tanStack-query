@@ -3,8 +3,8 @@ import {Button} from "@/components/ui/button"
 import {useT} from "@/i18n/useT"
 
 interface Props {
-    latitude: Number
-    longitude: Number
+    latitude: number
+    longitude: number
 }
 
 export const GmapsButton: React.FC<Props> = ({latitude, longitude}) => {
