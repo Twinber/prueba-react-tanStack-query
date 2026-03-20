@@ -1,0 +1,3 @@
+## 2024-03-20 - Custom Toggles and Accessibility
+**Learning:** Custom interactive elements (like the Language Switcher) that use non-interactive tags (`<span>`) with `onClick` handlers completely break keyboard navigation and screen reader semantics. Users cannot tab to them or know what they are.
+**Action:** Always replace non-interactive tags used for toggles/switches with semantic `<button>` elements. Apply `focus-visible` outline styles, use `aria-label` for context, and most importantly, use dynamic `aria-current="true"` (or `aria-pressed="true"`) to communicate the active state reliably to screen readers.
