@@ -1,0 +1,3 @@
+## 2024-03-24 - Language Switcher Accessibility
+**Learning:** Custom Language Switchers often neglect basic accessibility by using generic clickable `<span>` elements instead of semantic `<button>`s. Additionally, decorative text separators like `/` cause confusing out-of-context announcements for screen readers if not hidden.
+**Action:** Always use semantic `<button>` elements with `focus-visible` styles for interactive toggles, group them with `role="group"` and `aria-label`, assign `aria-pressed` for the active state using dynamic localization properties like `i18n.resolvedLanguage`, and explicitly hide decorative separators using `aria-hidden="true"`.
