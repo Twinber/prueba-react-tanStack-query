@@ -1,0 +1,3 @@
+## 2025-03-29 - Improve LanguageSwitcher Accessibility
+**Learning:** Found custom language toggle (EN / ES) implemented with generic `<span>` tags, `onClick` handlers, and no keyboard accessibility or screen reader state communication.
+**Action:** Replaced interactive `<span>` elements with semantic `<button>` elements, added `focus-visible` styles matching the existing Button component, added `role="group"` with an `aria-label`, assigned `aria-pressed` based on active language state dynamically resolved by `react-i18next`, and hid visual separators from screen readers via `aria-hidden="true"`.
