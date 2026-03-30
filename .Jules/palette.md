@@ -1,0 +1,3 @@
+## 2024-03-30 - Language Switcher Accessibility
+**Learning:** Interactive elements like language switchers were implemented using non-semantic `<span>` tags with `onClick` handlers, lacking both keyboard accessibility and active state communication (`aria-pressed`).
+**Action:** When implementing custom toggles or switchers with multiple options, always use semantic `<button>` elements, wrap them in a container with `role="group"`, and use `aria-pressed` dynamically computed from the active state to provide proper context and feedback to screen readers.
