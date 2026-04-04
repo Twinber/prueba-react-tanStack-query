@@ -1,0 +1,3 @@
+## 2024-11-20 - Custom Toggle Groups using Semantic Buttons
+**Learning:** When building custom toggle groups like a Language Switcher using separate items and a visual separator, simply using `<span>` with `onClick` completely hides the interaction from screen readers and breaks keyboard navigation. The decorative visual separators (`/`) also cause confusion when read aloud out of context.
+**Action:** Always wrap custom toggles in a `role="group"` with an `aria-label`. Convert items to semantic `<button>` tags with `aria-pressed` for state, apply `focus-visible` states for keyboard access, and strictly hide visual separators using `aria-hidden="true"`.
