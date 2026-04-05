@@ -7,10 +7,34 @@ export const LanguageSwitcher: React.FC = () => {
         await i18n.changeLanguage(lang)
     }
 
+    const currentLanguage = i18n.resolvedLanguage || i18n.language
+
+    const getButtonClass = (lang: string) => {
+        const isActive = currentLanguage?.startsWith(lang)
+        return `cursor-pointer rounded px-1 transition-colors hover:text-zinc-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 ${
+            isActive ? 'font-bold underline' : ''
+        }`
+    }
+
     return (
-        <div className="flex justify-end text-right">
-            <span className="cursor-pointer" onClick={() => handleLanguageChange('en')}>EN</span> /
-            <span className="cursor-pointer" onClick={() => handleLanguageChange('es')}>ES</span>
+        <div role="group" aria-label="Language selection" className="flex items-center justify-end gap-1 text-right">
+            <button
+                type="button"
+                aria-pressed={currentLanguage?.startsWith('en')}
+                className={getButtonClass('en')}
+                onClick={() => handleLanguageChange('en')}
+            >
+                EN
+            </button>
+            <span aria-hidden="true" className="select-none text-zinc-400">/</span>
+            <button
+                type="button"
+                aria-pressed={currentLanguage?.startsWith('es')}
+                className={getButtonClass('es')}
+                onClick={() => handleLanguageChange('es')}
+            >
+                ES
+            </button>
         </div>
     )
 }
