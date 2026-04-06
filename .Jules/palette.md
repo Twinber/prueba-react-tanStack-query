@@ -1,0 +1,3 @@
+## 2025-02-15 - Custom Interactive Elements Need Semantic Roles
+**Learning:** Custom UI toggles (like Language Switchers that look like text links) built with `<span>` and `onClick` handlers completely fail screen readers and keyboard navigation, breaking accessibility.
+**Action:** Always use semantic `<button>` elements for custom interactives, wrap them in `role="group"` when related, apply `aria-pressed` or `aria-current` for state, and provide `focus-visible` styles matching the design system so they are fully navigable and understandable.
