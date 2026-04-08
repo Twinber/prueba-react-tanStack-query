@@ -1,0 +1,3 @@
+## 2024-04-08 - Language Switcher Accessibility
+**Learning:** For custom toggles with multiple options, such as language switchers, using semantic `<button>` elements within a `role="group"` container with descriptive `aria-label`s and `aria-pressed` states provides the necessary accessibility context. Additionally, decorative text elements, like slashes or separators between buttons, should be hidden from screen readers using `aria-hidden="true"` to prevent confusing out-of-context announcements.
+**Action:** Always prefer semantic interactive elements over non-interactive ones with `onClick` handlers, and explicitly hide decorative visual separators.
