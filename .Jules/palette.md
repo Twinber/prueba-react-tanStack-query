@@ -1,0 +1,3 @@
+## 2023-10-27 - Converting onClick spans to accessible buttons
+**Learning:** Found a recurring pattern of `<span>` elements used with `onClick` handlers for custom interactive elements (like the Language Switcher). These are invisible to screen readers and inaccessible via keyboard.
+**Action:** Always replace `<span>` tags acting as buttons with semantic `<button>` elements, ensuring they include `focus-visible` styling (e.g., `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2`), and dynamic ARIA attributes like `aria-pressed="true"` for toggle states.
