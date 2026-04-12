@@ -4,7 +4,7 @@ import relativeTime from "dayjs/plugin/relativeTime"
 import "dayjs/locale/es"
 import "dayjs/locale/en"
 import {useT} from "@/i18n/useT.ts"
-import i18n from "i18next"
+import {useTranslation} from "react-i18next"
 
 dayjs.extend(relativeTime)
 
@@ -14,14 +14,15 @@ interface Props {
 
 export const TimeAgo: React.FC<Props> = ({timestamp}) => {
     const {t} = useT()
-    const lastUpdatedRelative = (timestamp: string) => dayjs(timestamp).fromNow()
+    const {i18n} = useTranslation()
+    const lastUpdatedRelative = (ts: string) => dayjs(ts).fromNow()
 
     const [timeAgo, setTimeAgo] = useState<string>(lastUpdatedRelative(timestamp))
     useEffect(() => {
         const currentLang = i18n.language
         dayjs.locale(currentLang)
         setTimeAgo(lastUpdatedRelative(timestamp))
-    }, [i18n.language])
+    }, [i18n.language, timestamp])
 
 
     return (
