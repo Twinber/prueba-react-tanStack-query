@@ -1,0 +1,3 @@
+## 2024-05-15 - Language Switcher Accessibility
+**Learning:** Custom interactive toggles (like Language Switchers) built with non-interactive elements (e.g. `<span>`) completely break keyboard navigation and screen reader support. Using semantic `<button>` tags with `focus-visible` outline styles, assigning dynamic ARIA attributes like `aria-pressed="true"`, and grouping them with `role="group"` provides an optimal accessible experience.
+**Action:** When implementing custom stateful switches or toggles, always use semantic elements, proper ARIA attributes (`aria-pressed` or `aria-current`), group them if appropriate, and explicitly hide decorative separators from screen readers.
