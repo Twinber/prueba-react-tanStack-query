@@ -1,0 +1,3 @@
+## 2024-04-17 - Language Switcher Accessibility
+**Learning:** Custom stateful toggles (like language switchers) frequently misuse `<span>` elements with `onClick` handlers, which completely breaks keyboard navigation and screen reader support. Furthermore, without `aria-pressed`, blind users cannot tell which language is currently active.
+**Action:** When auditing custom toggle groups, always convert interactive text elements to semantic `<button type="button">` tags. Apply `role="group"` with an `aria-label` to the container, set `aria-pressed="true"` dynamically on the active option, and explicitly hide decorative visual separators (like `/`) with `aria-hidden="true"`.
