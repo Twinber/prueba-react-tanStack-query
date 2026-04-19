@@ -1,0 +1,3 @@
+## 2026-04-19 - Accessible Custom Toggles
+**Learning:** When implementing custom toggle groups (like language switchers), using semantic `<button>` tags is critical for screen reader activation. Furthermore, dynamically applying `aria-pressed={true}` accurately communicates the selected state, and wrapping the options in a container with `role="group"` provides necessary context. Decorative separators should also be explicitly hidden with `aria-hidden="true"` to avoid confusing out-of-context screen reader announcements.
+**Action:** Always use `<button>` elements with `aria-pressed` inside a `role="group"` container for stateful custom toggles, and actively hide decorative text.
