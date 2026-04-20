@@ -1,0 +1,3 @@
+## 2024-11-20 - Language Switcher Accessibility
+**Learning:** Custom interactive elements like language toggles need explicit grouping (`role="group"`) and semantic buttons instead of clickable spans to be fully accessible to screen readers and keyboard users. Additionally, decorative text like slashes used as separators need `aria-hidden="true"` to prevent confusing readouts.
+**Action:** Always use semantic buttons with proper `aria-pressed` state for custom toggles, and hide visual separators from screen readers. Use `role="group"` on parent containers when multiple related interactive elements are grouped together.

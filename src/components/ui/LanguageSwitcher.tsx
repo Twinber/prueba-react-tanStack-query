@@ -3,14 +3,35 @@ import {useTranslation} from "react-i18next"
 
 export const LanguageSwitcher: React.FC = () => {
     const { i18n } = useTranslation()
+    const currentLanguage = i18n.resolvedLanguage || i18n.language
+
     const handleLanguageChange = async (lang: string) => {
         await i18n.changeLanguage(lang)
     }
 
     return (
-        <div className="flex justify-end text-right">
-            <span className="cursor-pointer" onClick={() => handleLanguageChange('en')}>EN</span> /
-            <span className="cursor-pointer" onClick={() => handleLanguageChange('es')}>ES</span>
+        <div
+            className="flex justify-end text-right items-center gap-1"
+            role="group"
+            aria-label="Language selection"
+        >
+            <button
+                type="button"
+                className={`focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 ${currentLanguage === 'en' ? 'font-bold' : ''}`}
+                onClick={() => handleLanguageChange('en')}
+                aria-pressed={currentLanguage === 'en'}
+            >
+                EN
+            </button>
+            <span aria-hidden="true">/</span>
+            <button
+                type="button"
+                className={`focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 ${currentLanguage === 'es' ? 'font-bold' : ''}`}
+                onClick={() => handleLanguageChange('es')}
+                aria-pressed={currentLanguage === 'es'}
+            >
+                ES
+            </button>
         </div>
     )
 }
