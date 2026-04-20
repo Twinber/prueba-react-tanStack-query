@@ -1,8 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
+
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
-    :root {
-        --radius: 0.5rem
-    }
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 188.7 94.5% 42.7%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 171 77% 40%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 188.7 94.5% 42.7% / 0.2;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 188.7 94.5% 42.7%;
+
+    --radius: 0.5rem;
+
+    /* Custom Nova Variables */
+    --nova-cyan: 188.7 94.5% 42.7%;
+    --nova-teal: 171 77% 40%;
+    --nova-glow: 188.7 94.5% 42.7% / 0.3;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-slate-950/40 backdrop-blur-md border border-cyan-500/20 shadow-[0_0_15px_rgba(34,211,238,0.1)];
+  }
+
+  .glow-text {
+    @apply text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)];
+  }
+
+  .hud-border {
+    @apply border border-cyan-500/30 relative;
+  }
+
+  .hud-border::before {
+    content: '';
+    @apply absolute -top-1 -left-1 w-2 h-2 border-t border-l border-cyan-400;
+  }
+
+  .hud-border::after {
+    content: '';
+    @apply absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-cyan-400;
+  }
+
+  /* Leaflet Tactical Popup */
+  .tech-popup .leaflet-popup-content-wrapper {
+    @apply bg-slate-900/90 text-slate-100 border border-cyan-500/30 font-mono text-xs rounded-none backdrop-blur-md shadow-[0_0_15px_rgba(34,211,238,0.2)];
+  }
+  .tech-popup .leaflet-popup-tip {
+    @apply bg-slate-900/90 border-b border-r border-cyan-500/30;
+  }
+  .tech-popup .leaflet-popup-close-button {
+    @apply text-cyan-400 hover:text-cyan-300 !important;
+  }
+}
+
+
+body {
+  @apply bg-[#020617] text-slate-100 min-h-screen font-sans;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(34, 211, 238, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(20, 184, 166, 0.05) 0%, transparent 50%);
 }

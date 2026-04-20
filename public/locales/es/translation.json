@@ -8,6 +8,8 @@
   "low": "Baja",
   "medium": "Media",
   "high": "Alta",
-  "show_in_gmaps": "Ver en Google Maps",
+  "view_on_map": "Ver en mapa",
+  "bikes_available": "Bicicletas disponibles",
+  "close": "Cerrar",
   "updated": "Actualizado"
 }

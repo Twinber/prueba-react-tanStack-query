@@ -3,7 +3,7 @@ import {Station} from "@/interfaces/networkData"
 import {Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card"
 import {StationAvailability} from "@/components/stations/StationAvailability"
 import {TimeAgo} from "@/components/ui/TimeAgo"
-import {GmapsButton} from "@/components/ui/GmapsButton"
+import {StationMapButton} from "@/components/ui/StationMapButton"
 
 interface Props {
     station: Station
@@ -11,18 +11,21 @@ interface Props {
 
 const StationItem: React.FC<Props> = ({station}) => {
     return (
-        <Card>
-            <CardHeader>
-                <h2>{station.name}</h2>
+        <Card className="hud-border overflow-hidden">
+            <CardHeader className="pb-2">
+                <h2 className="text-xl font-bold glow-text tracking-tight">{station.name}</h2>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-4">
                 <StationAvailability station={station}/>
-                <TimeAgo timestamp={station.timestamp}/>
+                <div className="text-xs font-mono text-cyan-500/60 uppercase tracking-widest">
+                    <TimeAgo timestamp={station.timestamp}/>
+                </div>
             </CardContent>
-            <CardFooter>
-                <GmapsButton latitude={station.latitude} longitude={station.longitude}/>
+            <CardFooter className="pt-2">
+                <StationMapButton station={station} className="w-full" />
             </CardFooter>
         </Card>
+
     )
 }
 
