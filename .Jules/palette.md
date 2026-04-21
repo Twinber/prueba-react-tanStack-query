@@ -1,0 +1,4 @@
+
+## 2024-05-18 - Accessible Language Switcher
+**Learning:** Custom interactive elements (like a language toggle constructed from individual buttons and separators) require explicit grouping (`role="group"`) to provide context. Furthermore, decorative textual elements between interactive components (like a slash separator `/`) must be explicitly hidden from screen readers using `aria-hidden="true"` to prevent them from being announced confusingly out of context. The active state in custom toggles must be indicated using `aria-pressed="true"`.
+**Action:** When replacing basic generic tags (`<span>` with `onClick`) with accessible semantic structures (like groups of `<button>`s), always check if surrounding decorative characters need to be visually hidden from screen readers. Use `aria-pressed` or `aria-current` dynamically driven by the state.
