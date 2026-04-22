@@ -3,14 +3,33 @@ import {useTranslation} from "react-i18next"
 
 export const LanguageSwitcher: React.FC = () => {
     const { i18n } = useTranslation()
+    const currentLang = i18n.resolvedLanguage || i18n.language
+
     const handleLanguageChange = async (lang: string) => {
         await i18n.changeLanguage(lang)
     }
 
     return (
-        <div className="flex justify-end text-right">
-            <span className="cursor-pointer" onClick={() => handleLanguageChange('en')}>EN</span> /
-            <span className="cursor-pointer" onClick={() => handleLanguageChange('es')}>ES</span>
+        <div
+            className="flex justify-end text-right items-center gap-1"
+            role="group"
+            aria-label="Language selection"
+        >
+            <button
+                className={`focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 rounded px-1 transition-colors ${currentLang === 'en' ? 'font-bold' : 'hover:bg-zinc-100 dark:hover:bg-zinc-800'}`}
+                onClick={() => handleLanguageChange('en')}
+                aria-pressed={currentLang === 'en'}
+            >
+                EN
+            </button>
+            <span aria-hidden="true" className="text-zinc-400 select-none">/</span>
+            <button
+                className={`focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 rounded px-1 transition-colors ${currentLang === 'es' ? 'font-bold' : 'hover:bg-zinc-100 dark:hover:bg-zinc-800'}`}
+                onClick={() => handleLanguageChange('es')}
+                aria-pressed={currentLang === 'es'}
+            >
+                ES
+            </button>
         </div>
     )
 }
