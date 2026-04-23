@@ -1,0 +1,3 @@
+## 2024-05-17 - Semantic Interactable Elements Require Proper ARIA
+**Learning:** Custom toggle buttons or interactable textual elements built with non-semantic tags (like `<span>`) lack native keyboard accessibility and screen reader support, creating an invisible barrier for accessibility. Replacing these with actual `<button>` elements, while also using `role="group"` on the container and `aria-pressed="true"`/`"false"`, reliably exposes the correct state and interaction expectations.
+**Action:** Always prefer semantic `<button>` tags over `<span>` with `onClick` handlers for custom interactive elements. Remember to add clear focus indicators (`focus-visible`) and dynamic ARIA attributes (like `aria-pressed`) to convey active state changes.
