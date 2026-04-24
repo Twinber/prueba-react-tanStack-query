@@ -21,7 +21,7 @@ export const TimeAgo: React.FC<Props> = ({timestamp}) => {
         const currentLang = i18n.language
         dayjs.locale(currentLang)
         setTimeAgo(lastUpdatedRelative(timestamp))
-    }, [i18n.language])
+    }, [i18n.language, timestamp])
 
 
     return (
