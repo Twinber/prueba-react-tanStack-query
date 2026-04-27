@@ -1,0 +1,3 @@
+## 2024-05-19 - Semantic Language Switchers
+**Learning:** Found that the standard LanguageSwitcher implementation used custom `onClick` elements (`<span>`) which lack native keyboard interactiveness (cannot be focused or activated via keyboard) and screen reader support without proper attributes. Additionally, visual separators (`/`) are announced confusingly by screen readers out of context.
+**Action:** Always refactor custom actionable text or icons into proper `<button>` elements, wrap them in `role="group"` with a descriptive `aria-label`, assign state indicators like `aria-pressed`, and hide decorative separators with `aria-hidden="true"`. Apply appropriate focus rings for keyboard navigation.
