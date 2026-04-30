@@ -1,0 +1,3 @@
+## 2024-05-15 - Dynamic ARIA attributes in Toggle Groups
+**Learning:** When building custom language switchers or toggle groups using `react-i18next`, dynamically evaluating the current language for `aria-pressed` using `i18n.resolvedLanguage || i18n.language` is crucial. Wrapping interactive children in a container with `role="group"` and `aria-label` provides correct screen reader context, and separating interactive tags like `<button>` instead of non-interactive `<span>` tags ensures proper keyboard accessibility.
+**Action:** Always prefer semantic tags (like `<button>`), group context (`role="group"`), and explicitly derived state attributes (`aria-pressed`) instead of basic text changes with onClick handlers.
