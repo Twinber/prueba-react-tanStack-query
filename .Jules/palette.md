@@ -1,0 +1,3 @@
+## 2024-05-17 - Accessible Language Switchers
+**Learning:** Custom toggle groups like language switchers often use `<span>` tags with `onClick` handlers, which breaks keyboard navigation and screen reader semantics. Additionally, visual separators like `/` cause noisy, unhelpful screen reader announcements.
+**Action:** Always use semantic `<button>` elements for interactive toggles, wrap the options in a container with `role="group"` and an `aria-label`, use `aria-pressed="true"` for the active state (determining state dynamically e.g., `i18n.resolvedLanguage || i18n.language`), apply `focus-visible` styles for keyboard navigation, and hide decorative separators using `aria-hidden="true"`.
