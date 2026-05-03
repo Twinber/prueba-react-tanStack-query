@@ -1,0 +1,3 @@
+## 2024-05-03 - Language Switcher Accessibility
+**Learning:** In a custom language switcher using plain tags for options, screen readers cannot properly interact or deduce the state if semantic HTML (`<button>`) and correct attributes (`aria-pressed`, `role="group"`) are not provided. Furthermore, visual separators (like `/`) must be explicitly hidden with `aria-hidden="true"` to prevent them from being announced confusingly out-of-context.
+**Action:** When implementing or refactoring custom selection toggles, always use semantic `<button>` tags with visible focus states, wrap them in a `role="group"` with an `aria-label`, correctly toggle `aria-pressed`, and explicitly hide decorative punctuation from assistive tech.
