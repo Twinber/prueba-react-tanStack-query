@@ -26,7 +26,7 @@ const NetworkItem: React.FC<Props> = ({network}) => {
                 <p>{t('city')}: {network.location.city}</p>
             </CardContent>
             <CardFooter>
-                <Link onMouseEnter={prefetchData} to={`/network/${network.id}`}>
+                <Link onMouseEnter={prefetchData} to={'/network/$networkId'} params={{ networkId: network.id }}>
                     <Button>{t('show')}</Button>
                 </Link>
             </CardFooter>
