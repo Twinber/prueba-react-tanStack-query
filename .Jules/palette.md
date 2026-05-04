@@ -1,0 +1,3 @@
+## 2024-05-04 - Accessible Language Switcher Keyboard Focus
+**Learning:** Using `<span>` with `onClick` completely hides the language switcher from keyboard users. The translation object `i18n.language` is a dynamic dependency but replacing `<span>` with `<button>` requires computing the active state safely using `i18n.resolvedLanguage || i18n.language` to properly set `aria-pressed`. Providing visually clear keyboard focus outlines is necessary without custom primary colors.
+**Action:** When implementing custom toggle elements, strictly use semantic `<button>` tags within a `role="group"`, apply generic `focus-visible:ring-zinc-950` classes for keyboard outlines, and compute active properties robustly for dynamic localization.
