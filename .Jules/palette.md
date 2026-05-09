@@ -1,0 +1,3 @@
+## 2024-03-21 - Custom Language Switcher Accessibility
+**Learning:** When building custom language switchers (or any custom toggle groups), using `<span>` elements with `onClick` handlers fails completely for keyboard users and screen readers. They need to be semantically marked up with `<button>`, grouped with `role="group"`, and use `aria-pressed` dynamic values to communicate which option is currently selected.
+**Action:** Always replace non-semantic tags with `<button>` for custom controls, add a `role="group"` with an `aria-label` to the container, and compute the active state using `i18n.resolvedLanguage || i18n.language` to set `aria-pressed="true"` on the active toggle button. Also ensure visual focus states are implemented for keyboard navigators.
