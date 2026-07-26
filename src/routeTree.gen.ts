@@ -17,6 +17,7 @@ import { Route as rootRoute } from './routes/__root'
 // Create Virtual Routes
 
 const IndexLazyImport = createFileRoute('/')()
+const FavoritesLazyImport = createFileRoute('/favorites')()
 const NetworkNetworkIdLazyImport = createFileRoute('/network/$networkId')()
 
 // Create/Update Routes
@@ -26,6 +27,12 @@ const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const FavoritesLazyRoute = FavoritesLazyImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/favorites.lazy').then((d) => d.Route))
 
 const NetworkNetworkIdLazyRoute = NetworkNetworkIdLazyImport.update({
   id: '/network/$networkId',
@@ -46,6 +53,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/network/$networkId': {
       id: '/network/$networkId'
       path: '/network/$networkId'
@@ -60,36 +74,41 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/favorites': typeof FavoritesLazyRoute
   '/network/$networkId': typeof NetworkNetworkIdLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/favorites': typeof FavoritesLazyRoute
   '/network/$networkId': typeof NetworkNetworkIdLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
+  '/favorites': typeof FavoritesLazyRoute
   '/network/$networkId': typeof NetworkNetworkIdLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/network/$networkId'
+  fullPaths: '/' | '/favorites' | '/network/$networkId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/network/$networkId'
-  id: '__root__' | '/' | '/network/$networkId'
+  to: '/' | '/favorites' | '/network/$networkId'
+  id: '__root__' | '/' | '/favorites' | '/network/$networkId'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  FavoritesLazyRoute: typeof FavoritesLazyRoute
   NetworkNetworkIdLazyRoute: typeof NetworkNetworkIdLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  FavoritesLazyRoute: FavoritesLazyRoute,
   NetworkNetworkIdLazyRoute: NetworkNetworkIdLazyRoute,
 }
 
@@ -104,11 +123,15 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/favorites",
         "/network/$networkId"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/favorites": {
+      "filePath": "favorites.lazy.tsx"
     },
     "/network/$networkId": {
       "filePath": "network/$networkId.lazy.tsx"
