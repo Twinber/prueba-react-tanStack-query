@@ -14,11 +14,11 @@ export const StationAvailability: React.FC<Props> = ({station}) => {
     return (
         <div>
             {availability < 0.3 &&
-                <span>{t('availability')}: <span className='text-red-600'>{t('low')}</span></span>}
+                <span>{t('availability')}: <span className='text-red-600 dark:text-red-400'>{t('low')}</span></span>}
             {availability >= 0.3 && availability < 0.6 &&
-                <span>{t('availability')}: <span className='text-yellow-600'>{t('medium')}</span></span>}
+                <span>{t('availability')}: <span className='text-yellow-600 dark:text-yellow-400'>{t('medium')}</span></span>}
             {availability >= 0.6 &&
-                <span>{t('availability')}: <span className='text-green-600'>{t('high')}</span></span>}
+                <span>{t('availability')}: <span className='text-green-600 dark:text-green-400'>{t('high')}</span></span>}
 
         </div>
     )
