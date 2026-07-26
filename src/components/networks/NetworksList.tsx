@@ -6,7 +6,7 @@ import ContainerLayout from "@/components/layouts/ContainerLayout"
 import {PageTitle} from "@/components/ui/PageTitle"
 import {useTranslation} from "react-i18next"
 import "@/i18n/i18next.ts"
-import {LanguageSwitcher} from "@/components/ui/LanguageSwitcher"
+
 import {Network} from "@/interfaces/networks.ts";
 
 interface Props {
@@ -19,7 +19,6 @@ const NetworkList: React.FC<Props> = ({loadingNetworks, networks}) => {
     return (
         <ContainerLayout>
             <PageTitle title={t('home_title')}/>
-            <LanguageSwitcher/>
             {loadingNetworks && <Spinner/>}
             {networks && (
                 <GridLayout>
