@@ -1,5 +1,9 @@
 {
   "home_title": "CityBike Spain",
+  "home_subtitle": "Explore bike-sharing networks across Spain. Find stations, check availability, and plan your ride.",
+  "networks_count": "Networks",
+  "cities_count": "Cities",
+  "no_networks": "No networks found.",
   "company": "Company",
   "system": "System",
   "city": "City",
