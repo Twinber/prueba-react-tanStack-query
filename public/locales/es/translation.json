@@ -1,5 +1,9 @@
 {
   "home_title": "CityBike España",
+  "home_subtitle": "Explora las redes de bicicletas compartidas en toda España. Encuentra estaciones, consulta la disponibilidad y planifica tu ruta.",
+  "networks_count": "Redes",
+  "cities_count": "Ciudades",
+  "no_networks": "No se encontraron redes.",
   "company": "Compañía",
   "system": "Sistema",
   "city": "Ciudad",
