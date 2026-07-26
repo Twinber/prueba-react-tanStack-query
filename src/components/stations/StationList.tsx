@@ -20,7 +20,7 @@ const StationList: React.FC<Props> = ({loadingNetworkData, networkData}) => {
                 <GridLayout>
                     {
                         networkData.stations.map((station: Station) =>
-                            (<NetworkDataItem key={station.id} station={station}/>))
+                            (<NetworkDataItem key={station.id} station={station} networkId={networkData.id}/>))
                     }
                 </GridLayout>
             )}

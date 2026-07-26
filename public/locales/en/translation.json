@@ -9,5 +9,7 @@
   "medium": "Medium",
   "high": "High",
   "show_in_gmaps": "Show in Google Maps",
-  "updated": "Updated"
+  "updated": "Updated",
+  "favorites": "Favorites",
+  "no_favorites": "No favorite stations yet."
 }
