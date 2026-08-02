@@ -11,5 +11,7 @@
   "show_in_gmaps": "Ver en Google Maps",
   "updated": "Actualizado",
   "search_stations": "Buscar estaciones",
-  "filter_all": "Todos"
+  "filter_all": "Todos",
+  "days_ago_one": "hace {{count}} día",
+  "days_ago_other": "hace {{count}} días"
 }

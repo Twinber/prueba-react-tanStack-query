@@ -11,5 +11,7 @@
   "show_in_gmaps": "Show in Google Maps",
   "updated": "Updated",
   "search_stations": "Search stations",
-  "filter_all": "All"
+  "filter_all": "All",
+  "days_ago_one": "{{count}} day ago",
+  "days_ago_other": "{{count}} days ago"
 }
