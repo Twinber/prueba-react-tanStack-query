@@ -1,5 +1,6 @@
-import React from "react"
+import React, {useMemo, useState} from "react"
 import NetworkItem from "./NetworkItem"
+import CountryFilter from "./CountryFilter"
 import GridLayout from "@/components/layouts/GridLayout"
 import {Spinner} from "@/components/ui/Spinner"
 import ContainerLayout from "@/components/layouts/ContainerLayout"
@@ -15,15 +16,26 @@ interface Props {
 }
 const NetworkList: React.FC<Props> = ({loadingNetworks, networks}) => {
     const {t} = useTranslation()
+    const [selectedCountry, setSelectedCountry] = useState('')
+
+    const filteredNetworks = useMemo(
+        () => selectedCountry
+            ? networks.filter((network) => network.location.country === selectedCountry)
+            : networks,
+        [networks, selectedCountry],
+    )
 
     return (
         <ContainerLayout>
             <PageTitle title={t('home_title')}/>
-            <LanguageSwitcher/>
+            <div className="flex items-center justify-between">
+                <CountryFilter networks={networks} onChange={setSelectedCountry}/>
+                <LanguageSwitcher/>
+            </div>
             {loadingNetworks && <Spinner/>}
-            {networks && (
+            {filteredNetworks && (
                 <GridLayout>
-                    {networks.map((network) => <NetworkItem key={network.id} network={network}/>)}
+                    {filteredNetworks.map((network) => <NetworkItem key={network.id} network={network}/>)}
                 </GridLayout>)}
         </ContainerLayout>
     )
