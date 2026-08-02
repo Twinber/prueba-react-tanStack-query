@@ -1,0 +1,42 @@
+{
+  "repo": {
+    "cwd": "/home/twinber/Projects/prueba-react-tanStack-query",
+    "remote": "origin",
+    "base_branch": "master",
+    "gh_repo": "Twinber/prueba-react-tanStack-query"
+  },
+  "socket": "/home/twinber/.config/herdr/herdr.sock",
+  "worktree_base": "/tmp/opencode/herdr-wt",
+  "git_token": "",
+  "timeouts": {
+    "agent_start_ms": 120000,
+    "worker_wait_ms": 1800000,
+    "review_wait_ms": 600000
+  },
+  "issues": [
+    {
+      "id": "stations-search",
+      "branch": "orq/stations-search",
+      "title": "Add search filter to StationList",
+      "prompt": "In this React + TanStack Query + Tailwind project, add a text search filter to the station list. Create a new component src/components/stations/StationSearch.tsx with a controlled input (debounced ~300ms) that filters stations by name (case-insensitive, partial match). Integrate it in src/components/stations/StationList.tsx above the list. The filtered result should be computed with useMemo over the incoming stations prop. Add an i18n key 'search_stations' to both public/locales/en/translation.json and public/locales/es/translation.json (es: 'Buscar estaciones'). Do not change the data-fetching hooks. Run npm run build and npm run lint before finishing. Commit on this branch. Reply TASK_COMPLETE when done.",
+      "on_blocked": "continue",
+      "max_blocked": 3
+    },
+    {
+      "id": "networks-filter",
+      "branch": "orq/networks-filter",
+      "title": "Add country filter to NetworksList",
+      "prompt": "In this React + TanStack Query + Tailwind project, add a country filter dropdown to the networks page. Create src/components/networks/CountryFilter.tsx: a <select> populated with the distinct countries from the networks prop (read network.location.country), plus an option 'All'. It receives networks and an onChange(country: string) callback. When 'All' is selected, pass an empty filter. Integrate it in src/components/networks/NetworksList.tsx next to the LanguageSwitcher. Add i18n keys 'filter_all' to both translation.json files (es: 'Todos'). Keep the component typed with the existing Network interface from src/interfaces/networks.ts. Run npm run build and npm run lint before finishing. Commit on this branch. Reply TASK_COMPLETE when done.",
+      "on_blocked": "continue",
+      "max_blocked": 3
+    },
+    {
+      "id": "timeago-relativedays",
+      "branch": "orq/timeago-relativedays",
+      "title": "Add relative day formatting to TimeAgo",
+      "prompt": "In this React + i18next project, improve src/components/ui/TimeAgo.tsx so that timestamps older than 7 days render as a relative date in the locale language (e.g. 'hace 3 días' / '3 days ago') instead of the current always-short format. Use the existing dayjs dependency (dayjs relativeTime plugin) and the locale from the i18n hook already used in the component. Keep the current short format for timestamps within the last 7 days. Add i18n keys if needed to translation.json files. Run npm run build and npm run lint before finishing. Commit on this branch. Reply TASK_COMPLETE when done.",
+      "on_blocked": "continue",
+      "max_blocked": 3
+    }
+  ]
+}
