@@ -9,5 +9,7 @@
   "medium": "Media",
   "high": "Alta",
   "show_in_gmaps": "Ver en Google Maps",
-  "updated": "Actualizado"
+  "updated": "Actualizado",
+  "days_ago_one": "hace {{count}} día",
+  "days_ago_other": "hace {{count}} días"
 }

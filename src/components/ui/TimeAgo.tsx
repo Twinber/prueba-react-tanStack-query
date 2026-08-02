@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React from "react"
 import dayjs from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
 import "dayjs/locale/es"
@@ -8,25 +8,27 @@ import i18n from "i18next"
 
 dayjs.extend(relativeTime)
 
+const DAYS_THRESHOLD = 7
+
 interface Props {
     timestamp: string
 }
 
 export const TimeAgo: React.FC<Props> = ({timestamp}) => {
     const {t} = useT()
-    const lastUpdatedRelative = (timestamp: string) => dayjs(timestamp).fromNow()
 
-    const [timeAgo, setTimeAgo] = useState<string>(lastUpdatedRelative(timestamp))
-    useEffect(() => {
-        const currentLang = i18n.language
-        dayjs.locale(currentLang)
-        setTimeAgo(lastUpdatedRelative(timestamp))
-    }, [i18n.language])
-
+    const formatTimestamp = (timestamp: string): string => {
+        const date = dayjs(timestamp)
+        const daysSince = dayjs().diff(date, 'day')
+        if (daysSince > DAYS_THRESHOLD) {
+            return t('days_ago', {count: daysSince})
+        }
+        return date.locale(i18n.language).fromNow()
+    }
 
     return (
         <div>
-            <span>{t('updated')} {timeAgo}</span>
+            <span>{t('updated')} {formatTimestamp(timestamp)}</span>
         </div>
     )
 }
