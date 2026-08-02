@@ -9,5 +9,6 @@
   "medium": "Medium",
   "high": "High",
   "show_in_gmaps": "Show in Google Maps",
-  "updated": "Updated"
+  "updated": "Updated",
+  "filter_all": "All"
 }
