@@ -19,7 +19,7 @@ export interface Station {
     longitude: number
     timestamp: string
     free_bikes: number
-    empty_slots: number
+    empty_slots: number | null
     extra: Extra
 }
 
