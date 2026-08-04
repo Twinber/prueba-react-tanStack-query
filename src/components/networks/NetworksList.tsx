@@ -19,9 +19,11 @@ const NetworkList: React.FC<Props> = ({loadingNetworks, networks}) => {
     const [selectedCountry, setSelectedCountry] = useState('')
 
     const filteredNetworks = useMemo(
-        () => selectedCountry
+        () => (selectedCountry
             ? networks.filter((network) => network.location.country === selectedCountry)
-            : networks,
+            : networks)
+            .slice()
+            .sort((a, b) => a.name.localeCompare(b.name, undefined, {sensitivity: 'base'})),
         [networks, selectedCountry],
     )
 
