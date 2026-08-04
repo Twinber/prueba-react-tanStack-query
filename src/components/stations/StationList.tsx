@@ -6,12 +6,14 @@ import {Spinner} from "@/components/ui/Spinner"
 import NetworkDataItem from "@/components/stations/StationItem"
 import GridLayout from "@/components/layouts/GridLayout"
 import StationSearch from "@/components/stations/StationSearch"
+import {useT} from "@/i18n/useT"
 
 interface Props {
     loadingNetworkData: boolean
     networkData: NetworkData | null
 }
 const StationList: React.FC<Props> = ({loadingNetworkData, networkData}) => {
+    const {t} = useT()
     const [searchTerm, setSearchTerm] = useState("")
 
     const filteredStations = useMemo(() => {
@@ -24,17 +26,30 @@ const StationList: React.FC<Props> = ({loadingNetworkData, networkData}) => {
 
     return (
         <ContainerLayout>
-            {networkData && <PageTitle title={`CityBike ${networkData?.name}`}/>}
+            {networkData && (
+                <div className="mb-4 flex items-center justify-between">
+                    <PageTitle title={`CityBike ${networkData?.name}`}/>
+                    <span className="rounded-full border border-amber-700 bg-amber-700/10 px-3 py-1 text-sm font-medium text-amber-700">
+                        {t('station_count', {count: networkData.stations.length})}
+                    </span>
+                </div>
+            )}
             {loadingNetworkData && <Spinner/>}
             {networkData && (
                 <>
                     <StationSearch onSearch={setSearchTerm}/>
-                    <GridLayout>
-                        {
-                            filteredStations.map((station: Station) =>
-                                (<NetworkDataItem key={station.id} station={station}/>))
-                        }
-                    </GridLayout>
+                    {filteredStations.length === 0 && searchTerm.trim() ? (
+                        <p className="py-8 text-center text-sm text-zinc-500">
+                            {t('no_stations_found')}
+                        </p>
+                    ) : (
+                        <GridLayout>
+                            {
+                                filteredStations.map((station: Station) =>
+                                    (<NetworkDataItem key={station.id} station={station}/>))
+                            }
+                        </GridLayout>
+                    )}
                 </>
             )}
         </ContainerLayout>

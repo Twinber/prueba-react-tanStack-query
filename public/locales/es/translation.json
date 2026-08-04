@@ -13,5 +13,9 @@
   "search_stations": "Buscar estaciones",
   "filter_all": "Todos",
   "days_ago_one": "hace {{count}} día",
-  "days_ago_other": "hace {{count}} días"
+  "days_ago_other": "hace {{count}} días",
+  "station_count_one": "{{count}} estación",
+  "station_count_other": "{{count}} estaciones",
+  "no_stations_found": "No se encontraron estaciones",
+  "clear_search": "Limpiar búsqueda"
 }
