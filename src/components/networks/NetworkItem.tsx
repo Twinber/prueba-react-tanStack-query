@@ -1,10 +1,11 @@
 import React from "react"
 import {Network} from "@/interfaces/networks"
 import {Link} from "@tanstack/react-router"
-import {Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card"
-import {Button} from "@/components/ui/button"
+import {CardContent, CardFooter, CardHeader} from "@/components/ui/card"
+import {buttonVariants} from "@/components/ui/button"
+import {cn} from "@/lib/utils"
 import {useT} from "@/i18n/useT"
-import {usePrefetchStations} from "@/api/usePrefetchStations.ts";
+import {usePrefetchStations} from "@/api/usePrefetchStations.ts"
 
 interface Props {
     network: Network
@@ -16,7 +17,13 @@ const NetworkItem: React.FC<Props> = ({network}) => {
     const prefetchData = usePrefetchStations(network.id)
 
     return (
-        <Card>
+        <Link
+            to={`/network/${network.id}`}
+            onMouseEnter={prefetchData}
+            className={cn(
+                "block rounded-xl border border-zinc-200 bg-white text-zinc-950 shadow transition-colors hover:border-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:hover:border-zinc-700 dark:focus-visible:ring-zinc-300"
+            )}
+        >
             <CardHeader>
                 <h2>{network.name}</h2>
             </CardHeader>
@@ -26,11 +33,9 @@ const NetworkItem: React.FC<Props> = ({network}) => {
                 <p>{t('city')}: {network.location.city}</p>
             </CardContent>
             <CardFooter>
-                <Link onMouseEnter={prefetchData} to={`/network/${network.id}`}>
-                    <Button>{t('show')}</Button>
-                </Link>
+                <span className={buttonVariants()}>{t('show')}</span>
             </CardFooter>
-        </Card>
+        </Link>
     )
 }
 
