@@ -17,5 +17,8 @@
   "station_count_one": "{{count}} estación",
   "station_count_other": "{{count}} estaciones",
   "no_stations_found": "No se encontraron estaciones",
-  "clear_search": "Limpiar búsqueda"
+  "clear_search": "Limpiar búsqueda",
+  "error_loading_stations": "Hubo un error al cargar las estaciones",
+  "retry": "Reintentar",
+  "refresh": "Actualizar"
 }
