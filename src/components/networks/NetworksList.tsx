@@ -29,7 +29,7 @@ const NetworkList: React.FC<Props> = ({loadingNetworks, networks}) => {
 
     return (
         <ContainerLayout>
-            <PageTitle title={t('home_title')}/>
+            <PageTitle title={`${t('home_title')} (${filteredNetworks.length})`}/>
             <div className="flex items-center justify-between">
                 <CountryFilter networks={networks} onChange={setSelectedCountry}/>
                 <LanguageSwitcher/>
