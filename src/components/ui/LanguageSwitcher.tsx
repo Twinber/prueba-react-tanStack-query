@@ -9,8 +9,8 @@ export const LanguageSwitcher: React.FC = () => {
 
     return (
         <div className="flex justify-end text-right">
-            <span className="cursor-pointer" onClick={() => handleLanguageChange('en')}>EN</span> /
-            <span className="cursor-pointer" onClick={() => handleLanguageChange('es')}>ES</span>
+            <span className="cursor-pointer" onClick={() => handleLanguageChange('en')}>🇬🇧</span> /
+            <span className="cursor-pointer" onClick={() => handleLanguageChange('es')}>🇪🇸</span>
         </div>
     )
 }
