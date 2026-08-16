@@ -1,0 +1,3 @@
+## 2024-05-11 - Language Switcher Accessibility
+**Learning:** Custom UI toggles (like Language Switchers) built with non-interactive elements (e.g., `<span>` with `onClick`) completely hide the control from keyboard users and provide poor context for screen readers. In `react-i18next`, dynamically checking `i18n.resolvedLanguage || i18n.language` is crucial for computing ARIA states like `aria-pressed`. Separators (like `/`) between inline controls must be explicitly hidden from assistive tech to avoid confusing readouts.
+**Action:** Always use semantic `<button>` elements for custom toggles, apply design system `focus-visible` classes for keyboard navigation, wrap the set in `role="group"` with an `aria-label`, and hide decorative separators using `aria-hidden="true"`.
