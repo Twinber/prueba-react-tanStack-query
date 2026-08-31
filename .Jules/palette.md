@@ -1,0 +1,3 @@
+## 2024-05-24 - Semantic Language Switcher Grouping
+**Learning:** Replaced non-interactive `<span>` tags with semantic `<button>` tags within a `role="group"` div in `LanguageSwitcher.tsx`. This fixed keyboard navigation issues and properly communicated state (using `aria-pressed`) and decorative elements (using `aria-hidden="true"`) to screen readers for a common UI toggle pattern.
+**Action:** Apply this semantic `role="group"` and `<button>` + `aria-pressed` toggle pattern whenever building custom multi-option toggles instead of relying on generic `onClick` handlers on non-interactive elements.
