@@ -1,0 +1,3 @@
+## 2026-04-10 - Replaced non-interactive tags in language switcher
+**Learning:** Found non-interactive `<span>` elements being used for language switching without keyboard accessibility or focus indicators. In React i18next setups, always use semantic `<button>` tags and `aria-pressed` combined with `role="group"` to ensure screen readers understand the active state correctly.
+**Action:** Changed the LanguageSwitcher component to use `<button>` elements, added focus states with standard Tailwind outline utilities, hid the decorative '/' separator from screen readers, and used `aria-pressed` with a `role="group"` container.
