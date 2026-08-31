@@ -1,14 +1,26 @@
 import path from "path"
-import { defineConfig } from 'vite'
+import { defineConfig, Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
 
+function apiStatusPlugin(): Plugin {
+  return {
+    name: 'api-status',
+    configureServer(server) {
+      server.middlewares.use('/api/status', (_req, res) => {
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify({ ok: true }))
+      })
+    },
+  }
+}
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     TanStackRouterVite(),
-    react()],
+    react(),
+    apiStatusPlugin()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
